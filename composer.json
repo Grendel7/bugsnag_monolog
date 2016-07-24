@@ -10,7 +10,7 @@
     }
   ],
   "autoload": {
-    "psr-4": {"i7grendel\bugsnag_monolog\\": "src/"}
+    "psr-4": {"i7grendel\\BugsnagMonolog\\": "src/"}
   },
   "require": {
     "monolog/monolog": "~1.11",
