@@ -13,7 +13,7 @@
     "psr-4": {"i7grendel\bugsnag_monolog\\": "src/"}
   },
   "require": {
-    "monolog/monolog": "1.11.*",
-    "bugsnag/bugsnag": "2.9.*"
+    "monolog/monolog": "~1.11",
+    "bugsnag/bugsnag": "~2.9"
   }
 }
