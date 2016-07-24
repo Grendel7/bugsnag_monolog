@@ -1,0 +1,19 @@
+{
+  "name": "i7grendel/bugsnag_monolog",
+  "description": "Send Monolog logs to Bugsnag",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Hans Adema",
+      "email": "hans@xvhost.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"i7grendel\bugsnag_monolog\\": "src/"}
+  },
+  "require": {
+    "monolog/monolog": "1.11.*",
+    "bugsnag/bugsnag": "2.9.*"
+  }
+}
