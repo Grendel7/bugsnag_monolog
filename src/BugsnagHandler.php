@@ -2,21 +2,23 @@
 
 namespace i7grendel\BugsnagMonolog;
 
+use Bugsnag\Client;
+use Bugsnag\Report;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 
 class BugsnagHandler extends AbstractProcessingHandler
 {
     /**
-     * @var \Bugsnag_Client
+     * @var \Bugsnag\Client
      */
     protected $bugsnag;
 
-    public function __construct(\Bugsnag_Client $bugsnag, $level = Logger::DEBUG, $bubble = true)
+    public function __construct(Client $bugsnag, $level = Logger::DEBUG, $bubble = true)
     {
-        $this->bugsnag = $bugsnag;
-
         parent::__construct($level, $bubble);
+
+        $this->bugsnag = $bugsnag;
     }
 
     /**
@@ -27,6 +29,9 @@ class BugsnagHandler extends AbstractProcessingHandler
      */
     protected function write(array $record)
     {
-        $this->bugsnag->notifyError($record['message'], $record['message'], $record['context'], strtolower($record['level_name']));
+        $this->bugsnag->notifyError($record['message'], $record['message'], function (Report $report) use ($record) {
+            $report->setSeverity(strtolower($record['level_name']));
+            $report->setMetaData($record['context']);
+        });
     }
 }
